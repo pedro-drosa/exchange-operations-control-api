@@ -1,4 +1,4 @@
-const Currency = require('../model/Currency');
+const Currency = require('../models/Currency');
 
 module.exports = {
   async index(request, response) {

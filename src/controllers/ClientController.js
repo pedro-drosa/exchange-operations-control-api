@@ -1,4 +1,4 @@
-const Operation = require('../model/Operation');
+const Operation = require('../models/Operation');
 const {parseISO} = require('date-fns');
 
 module.exports = {

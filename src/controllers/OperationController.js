@@ -1,5 +1,5 @@
-const Operation = require('../model/Operation');
-const Currency = require('../model/Currency');
+const Operation = require('../models/Operation');
+const Currency = require('../models/Currency');
 
 const Calculator = require('../shared/Calculator');
 
