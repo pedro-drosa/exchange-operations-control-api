@@ -13,15 +13,24 @@ module.exports = {
     const { name, quantity, source, target } = request.body;
 
     const currencies = await Currency.findAll();
-
-    const calculator = new Calculator(currencies);
-
-    const exchange = calculator.convertValues(quantity, source, target);
     
+    const calculator = new Calculator(currencies);
+    const exchange = calculator.convertValues(quantity, source, target);
     const standardRat = calculator.calculateRate(exchange, 10);
     const iof = calculator.calculateRate(exchange, 1.1); 
-    
-    const total = exchange + standardRat + iof
+    const total = exchange + standardRat + iof;
+
+    const sourceExists = await Currency.findOne({
+      where: {name: source}
+    });
+
+    const targetExists = await Currency.findOne({
+      where: {name: target}
+    });
+
+    if(!sourceExists || !targetExists) {
+      return response.status(400).json({error: 'Oh no 🙈, an error occurred, check the data and try again'});
+    }
 
     const operation = await Operation.create({ 
       name,
