@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return await queryInterface.createTable('operations', { 
+    return await queryInterface.createTable('operations', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
       },
       quantity: {
-        type: Sequelize.DECIMAL(10,2),
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
       },
       source: {
@@ -26,16 +26,16 @@ module.exports = {
         allowNull: false,
       },
       exchange: {
-        type: Sequelize.DECIMAL(10,2),
+        type: Sequelize.DECIMAL(10, 2),
       },
       total: {
-        type: Sequelize.DECIMAL(10,2),
+        type: Sequelize.DECIMAL(10, 2),
       },
       iof: {
-        type: Sequelize.DECIMAL(10,2),
+        type: Sequelize.DECIMAL(10, 2),
       },
       standardRat: {
-        type: Sequelize.DECIMAL(10,2),
+        type: Sequelize.DECIMAL(10, 2),
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -44,11 +44,11 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
-      }
+      },
     });
   },
 
   down: async (queryInterface, Sequelize) => {
     return await queryInterface.dropTable('operations');
-  }
+  },
 };

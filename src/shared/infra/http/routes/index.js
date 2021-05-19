@@ -1,4 +1,4 @@
-const {Router} = require('express');
+const { Router } = require('express');
 
 const currenciesRouter = require('../../../../routes/currencies.routes');
 const operationsRouter = require('../../../../routes/operations.routes');

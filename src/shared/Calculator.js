@@ -24,7 +24,6 @@ class Calculator {
   findCodeByName(name, currencies) {
     try {
       const [currency] = currencies.filter((currency) => {
-
         return currency.name === name;
       });
 
@@ -56,7 +55,7 @@ class Calculator {
   addRate(value, rate) {
     const exchangeRate = value * (rate / 100);
     const valueWithRate = value + exchangeRate;
-    
+
     return parseFloat(valueWithRate.toFixed(2));
   }
 }

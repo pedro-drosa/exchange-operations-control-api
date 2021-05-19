@@ -1,24 +1,24 @@
 const Operation = require('../models/Operation');
-const {parseISO} = require('date-fns');
+const { parseISO } = require('date-fns');
 
 module.exports = {
   async index(request, response) {
-    const {name, date}  = request.body;
+    const { name, date } = request.body;
 
-    if(name && date) {
+    if (name && date) {
       const parsedDate = parseISO(date);
-    
+
       const operations = await Operation.findAll({
-        where: { name, createdAt: parsedDate }
+        where: { name, createdAt: parsedDate },
       });
 
-      return response.json({operations});
+      return response.json({ operations });
     }
 
     const operations = await Operation.findAll({
-      where: { name}
+      where: { name },
     });
 
-    return response.json({operations});
-  }
-}
+    return response.json({ operations });
+  },
+};

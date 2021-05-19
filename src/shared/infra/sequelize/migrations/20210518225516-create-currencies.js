@@ -2,8 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    
-    return await queryInterface.createTable('currencies', { 
+    return await queryInterface.createTable('currencies', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -27,7 +26,7 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
-      }
+      },
     });
   },
 
@@ -38,5 +37,5 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-  }
+  },
 };

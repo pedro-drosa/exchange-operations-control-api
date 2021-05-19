@@ -8,16 +8,16 @@ module.exports = {
 
   async store(request, response) {
     const { code, name, price } = request.body;
-    
+
     const currencyExists = await Currency.findOne({
-      where: { code }
+      where: { code },
     });
 
     if (currencyExists) {
-      return response.status(400).json({erro: 'currency alread exists'});
+      return response.status(400).json({ erro: 'currency alread exists' });
     }
 
-    const currency = await Currency.create({code, name, price});
+    const currency = await Currency.create({ code, name, price });
 
     return response.json(currency);
   },
@@ -25,15 +25,15 @@ module.exports = {
   async update(request, response) {
     const { id } = request.params;
     const { price } = request.body;
-    
+
     const currency = await Currency.findByPk(id);
 
     if (!currency) {
-      return response.status(400).json({error: 'currency not found'})
+      return response.status(400).json({ error: 'currency not found' });
     }
-    
-    await Currency.update({ price }, { where: {id: currency.id} })
 
-    return response.json({price: price.toFixed(2)});
-  }
-}
+    await Currency.update({ price }, { where: { id: currency.id } });
+
+    return response.json({ price: price.toFixed(2) });
+  },
+};
