@@ -1,5 +1,0 @@
-class CreateOperationService {
-  async execute(){
-    
-  }
-}
