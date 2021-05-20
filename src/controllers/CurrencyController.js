@@ -1,12 +1,41 @@
 const Currency = require('../models/Currency');
+const Yup = require('yup');
 
 module.exports = {
   async index(request, response) {
+    const { id } = request.params;
+
+    const schemma = Yup.object().shape({
+      id: Yup.number().min(1),
+    });
+
+    if (!(await schemma.isValid(request.params))) {
+      return response.status(400).json({ error: 'validation fails' });
+    }
+
+    if (id) {
+      const currency = await Currency.findByPk(id);
+      if (!currency) {
+        return response.status(404).json({ mesage: 'currency not found' });
+      }
+      return response.json(currency);
+    }
+
     const currencies = await Currency.findAll();
     return response.json(currencies);
   },
 
   async store(request, response) {
+    const schema = Yup.object().shape({
+      code: Yup.string().required().min(3),
+      name: Yup.string().required().min(4),
+      price: Yup.number().required(),
+    });
+
+    if (!(await schema.isValid(request.body))) {
+      return response.status(400).json({ error: 'validation fails' });
+    }
+
     const { code, name, price } = request.body;
 
     const currencyExists = await Currency.findOne({
@@ -26,6 +55,14 @@ module.exports = {
     const { id } = request.params;
     const { price } = request.body;
 
+    const schemma = Yup.object().shape({
+      price: Yup.number().positive().required(),
+    });
+
+    if (!(await schemma.isValid(request.body))) {
+      return response.status(400).json({ error: 'validation fails' });
+    }
+
     const currency = await Currency.findByPk(id);
 
     if (!currency) {
@@ -35,5 +72,15 @@ module.exports = {
     await Currency.update({ price }, { where: { id: currency.id } });
 
     return response.json({ price: price.toFixed(2) });
+  },
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await Currency.destroy({
+      where: { id },
+    });
+
+    return response.status(200).json();
   },
 };

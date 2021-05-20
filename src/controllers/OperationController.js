@@ -29,11 +29,9 @@ module.exports = {
     });
 
     if (!sourceExists || !targetExists) {
-      return response
-        .status(400)
-        .json({
-          error: 'Oh no 🙈, an error occurred, check the data and try again',
-        });
+      return response.status(400).json({
+        error: 'Oh no 🙈, an error occurred, check the data and try again',
+      });
     }
 
     const operation = await Operation.create({
