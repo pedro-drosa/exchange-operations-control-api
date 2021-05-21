@@ -15,7 +15,7 @@ module.exports = {
     });
 
     if (!(await schemma.isValid(request.query))) {
-      return response.json({ error: 'validation error, check the data and try again' });
+      return response.status(400).json({ error: 'validation error, check the data and try again' });
     }
 
     if(name && date) {
@@ -27,7 +27,7 @@ module.exports = {
       });
 
       if (operations.length === 0) {
-        return response.json({ message: 'Not found' });
+        return response.status(404).json({ message: 'Not found' });
       }
 
       return response.json(operations);
@@ -44,7 +44,7 @@ module.exports = {
       });
 
       if (operations.length === 0) {
-        return response.json({ message: 'Not found' });
+        return response.status(404).json({ message: 'Not found' });
       }
 
       return response.json(operations);
@@ -63,7 +63,7 @@ module.exports = {
     });
 
     if (!(await scheema.isValid(request.body))) {
-      return response.json({
+      return response.status(400).json({
         error: 'validation error, check the data and try again',
       });
     }

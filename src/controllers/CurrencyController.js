@@ -70,7 +70,7 @@ module.exports = {
     const currency = await Currency.findByPk(id);
 
     if (!currency) {
-      return response.status(400).json({ error: 'currency not found' });
+      return response.status(404).json({ error: 'currency not found' });
     }
 
     await Currency.update({ price }, { where: { id: currency.id } });
