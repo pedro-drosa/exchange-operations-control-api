@@ -10,7 +10,7 @@ module.exports = {
     });
 
     if (!(await schemma.isValid(request.params))) {
-      return response.status(400).json({ error: 'validation fails' });
+      return response.status(400).json({ error: 'validation error, check the data and try again' });
     }
 
     if (id) {
@@ -33,7 +33,9 @@ module.exports = {
     });
 
     if (!(await schema.isValid(request.body))) {
-      return response.status(400).json({ error: 'validation fails' });
+      return response
+        .status(400)
+        .json({ error: 'validation error, check the data and try again' });
     }
 
     const { code, name, price } = request.body;
@@ -60,7 +62,9 @@ module.exports = {
     });
 
     if (!(await schemma.isValid(request.body))) {
-      return response.status(400).json({ error: 'validation fails' });
+      return response
+        .status(400)
+        .json({ error: 'validation error, check the data and try again' });
     }
 
     const currency = await Currency.findByPk(id);
@@ -71,7 +75,9 @@ module.exports = {
 
     await Currency.update({ price }, { where: { id: currency.id } });
 
-    return response.json({ price: price.toFixed(2) });
+    const newValue = await Currency.findByPk(id);
+
+    return response.json(newValue);
   },
 
   async delete(request, response) {
@@ -81,6 +87,6 @@ module.exports = {
       where: { id },
     });
 
-    return response.status(200).json();
+    return response.response.send();
   },
 };

@@ -37,6 +37,10 @@ module.exports = {
       standardRat: {
         type: Sequelize.DECIMAL(10, 2),
       },
+      date: {
+        type: Sequelize.DATEONLY,
+        defaultValue: new Date(),
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,

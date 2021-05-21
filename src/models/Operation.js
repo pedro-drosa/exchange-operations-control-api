@@ -11,6 +11,7 @@ class Operation extends Model {
         total: DataTypes.DECIMAL(10, 2),
         iof: DataTypes.DECIMAL(10, 2),
         standardRat: DataTypes.DECIMAL(10, 2),
+        date: DataTypes.DATEONLY,
       },
       { sequelize: connection }
     );
