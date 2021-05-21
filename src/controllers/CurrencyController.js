@@ -10,7 +10,9 @@ module.exports = {
     });
 
     if (!(await schemma.isValid(request.params))) {
-      return response.status(400).json({ error: 'validation error, check the data and try again' });
+      return response
+        .status(400)
+        .json({ error: 'validation error, check the data and try again' });
     }
 
     if (id) {

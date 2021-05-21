@@ -1,5 +1,5 @@
 const Yup = require('yup');
-const { Op } = require("sequelize");
+const { Op } = require('sequelize');
 
 const Operation = require('../models/Operation');
 const Currency = require('../models/Currency');
@@ -15,10 +15,12 @@ module.exports = {
     });
 
     if (!(await schemma.isValid(request.query))) {
-      return response.status(400).json({ error: 'validation error, check the data and try again' });
+      return response
+        .status(400)
+        .json({ error: 'validation error, check the data and try again' });
     }
 
-    if(name && date) {
+    if (name && date) {
       const operations = await Operation.findAll({
         where: {
           name,
@@ -36,10 +38,7 @@ module.exports = {
     if (name || date) {
       const operations = await Operation.findAll({
         where: {
-          [Op.or]: [
-            {name: `${name}`},
-            {date: `${date}`},
-          ]
+          [Op.or]: [{ name: `${name}` }, { date: `${date}` }],
         },
       });
 
