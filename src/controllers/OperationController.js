@@ -22,10 +22,7 @@ module.exports = {
 
     if (name && date) {
       const operations = await Operation.findAll({
-        where: {
-          name,
-          date,
-        },
+        where: { name, date },
       });
 
       if (operations.length === 0) {
