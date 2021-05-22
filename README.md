@@ -222,7 +222,7 @@ Content-Type: application/json
 
 `GET` `/operations/?date=date_operation` -  obtenha todas as operações feitas em uma data especifica.
 
-`GET` `/operations/?name=Pedro&date=2021-05-21` -  obtenha todas as operações feitas por um usuário especifico em uma data específica.
+`GET` `/operations/?name=client_name&date=date_operation` -  obtenha todas as operações feitas por um usuário especifico em uma data específica.
 
 **Solicitação de exemplo:**
 
