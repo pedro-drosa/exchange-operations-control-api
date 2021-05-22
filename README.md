@@ -25,7 +25,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 [NodeJS](https://nodejs.org/), 
 
-NPM ou [Yarn](https://classic.yarnpkg.com/)
+[NPM](https://nodejs.org/) ou [Yarn](https://classic.yarnpkg.com/)
 
 Uma instância do [MySQL](https://www.mysql.com/)
 
@@ -33,7 +33,7 @@ Uma instância do [MySQL](https://www.mysql.com/)
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/pedro-drosa/operations-management-system-api.git
+$ git clone https://github.com/pedro-drosa/exchange-operations-control-api.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd operations-management-system-api
