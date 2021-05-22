@@ -36,7 +36,7 @@ Uma instância do [MySQL](https://www.mysql.com/)
 $ git clone https://github.com/pedro-drosa/exchange-operations-control-api.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd operations-management-system-api
+$ cd exchange-operations-control-api
 
 # Instale as dependências
 $ yarn
